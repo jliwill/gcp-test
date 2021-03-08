@@ -26,6 +26,7 @@ steps:
       - '-c'
       - | 
           cd ./services
+          npm install
           npx serverless deploy -v
 substitutions:
   _KEYRING: projects/clear-veld-306519/locations/us-central1/keyRings/test_keyring
