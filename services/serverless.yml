@@ -10,7 +10,7 @@ provider:
   # https://serverless.com/framework/docs/providers/google/guide/credentials/
   #
   # the path to the credentials file needs to be absolute
-  credentials: ~/services/keyfile.json
+  credentials: ~/gcp-test/services/keyfile.json
 
 frameworkVersion: '2'
 
