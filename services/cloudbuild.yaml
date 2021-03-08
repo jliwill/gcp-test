@@ -26,6 +26,7 @@ steps:
       - '-c'
       - | 
           cd ./services
+          pwd
           npm install
           npx serverless deploy -v
 substitutions:
