@@ -26,22 +26,18 @@ steps:
       - '-c'
       - | 
           cd ./services
-          pwd
           npm install
           npx serverless deploy -v
 substitutions:
   _KEYRING: projects/clear-veld-306519/locations/us-central1/keyRings/test_keyring
   _KEY: projects/clear-veld-306519/locations/us-central1/keyRings/test_keyring/cryptoKeys/my_test_key #copy resource name in console
 
-
-# - name: 'gcr.io/cloud-builders/gcloud'
-#   entrypoint: "bash"
-#   args:
-#       - "-c"
-      # - |
-      #     echo "enter 1 bash command per line"
-      #     ls -la
-      #     gcloud version
-      #     ...
-    
-#test
+#workspace/services 
+#enable deployment manager api
+#give kms decrypt role to gcloud service account (not created one)
+#create service account for cloud build 
+#generate keyfile from service account
+#create keyring and key in GCP console, copy resource paths for step below
+#encrypt in gcp cli
+#gcloud kms encrypt --location "us-central1" --keyring "projects/clear-veld-306519/locations/us-central1/keyRings/test_keyring" --key "projects/clear-veld-306519/locations/us-central1/keyRings/test_keyring/cryptoKeys/my_test_key" --plaintext-file ./keyfile.json --ciphertext-file ./keyfile.json.enc
+#place keyfile.json.enc into your github repo
