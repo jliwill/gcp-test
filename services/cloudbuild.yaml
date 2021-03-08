@@ -22,7 +22,11 @@ steps:
   - name: 'gcr.io/cloud-builders/npm'
     id: 'Deploy serverless framework'
     entrypoint: bash
-    args: ['-c', 'npx serverless deploy -v']
+    args: 
+      - '-c'
+      - | 
+          cd ./services
+          npx serverless deploy -v
 substitutions:
   _KEYRING: projects/clear-veld-306519/locations/us-central1/keyRings/test_keyring
   _KEY: projects/clear-veld-306519/locations/us-central1/keyRings/test_keyring/cryptoKeys/my_test_key #copy resource name in console
