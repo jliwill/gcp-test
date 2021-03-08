@@ -1,4 +1,5 @@
 steps:
+  #npm install
   - name: 'gcr.io/cloud-builders/npm'
     id: 'Install node_modules based on package.json'
     args: ['install']
@@ -7,9 +8,11 @@ steps:
   # - name: 'gcr.io/cloud-builders/npm'
   #   id: 'Install npx'
   #   args: ['install', '-g', 'npx']
+ #serverless install
   - name: 'gcr.io/cloud-builders/npm'
     id: 'Install Serverless framework using npm'
     args: ['install', '-g', 'serverless']
+  #decrypt keyfile.json.enc
   - name: gcr.io/cloud-builders/gcloud
     args:
       - kms
@@ -19,6 +22,7 @@ steps:
       - --location=us-central1
       - --keyring=${_KEYRING}
       - --key=${_KEY}
+  #serverless deploy
   - name: 'gcr.io/cloud-builders/npm'
     id: 'Deploy serverless framework'
     entrypoint: bash
@@ -30,15 +34,5 @@ steps:
           npx serverless deploy -v
 substitutions:
   _KEYRING: projects/clear-veld-306519/locations/us-central1/keyRings/test_keyring
-  _KEY: projects/clear-veld-306519/locations/us-central1/keyRings/test_keyring/cryptoKeys/my_test_key #copy resource name in console
-
-#workspace/services 
-#enable deployment manager api
-#give kms decrypt role to gcloud service account (not created one)
-#create service account for cloud build 
-#generate keyfile from service account
-#create keyring and key in GCP console, copy resource paths for step below
-#encrypt in gcp cli
-#gcloud kms encrypt --location "us-central1" --keyring "projects/clear-veld-306519/locations/us-central1/keyRings/test_keyring" --key "projects/clear-veld-306519/locations/us-central1/keyRings/test_keyring/cryptoKeys/my_test_key" --plaintext-file ./keyfile.json --ciphertext-file ./keyfile.json.enc
-#place keyfile.json.enc into your github repo
-#
+  _KEY: projects/clear-veld-306519/locations/us-central1/keyRings/test_keyring/cryptoKeys/my_test_key #copy resource name in console GCP KMS
+ 
