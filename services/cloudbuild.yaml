@@ -4,9 +4,9 @@ steps:
     args: ['install']
   # NOTE: npx is used as workaround to allow serverless command to be found
   # https://github.com/serverless/serverless/issues/4889
-  - name: 'gcr.io/cloud-builders/npm'
-    id: 'Install npx'
-    args: ['install', '-g', 'npx']
+  # - name: 'gcr.io/cloud-builders/npm'
+  #   id: 'Install npx'
+  #   args: ['install', '-g', 'npx']
   - name: 'gcr.io/cloud-builders/npm'
     id: 'Install Serverless framework using npm'
     args: ['install', '-g', 'serverless']
