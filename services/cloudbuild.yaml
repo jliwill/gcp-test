@@ -16,7 +16,7 @@ steps:
       - decrypt
       - --ciphertext-file=keyfile.json.enc
       - --plaintext-file=keyfile.json
-      - --location=global
+      - --location=us-central1
       - --keyring=${_KEYRING}
       - --key=${_KEY}
   - name: 'gcr.io/cloud-builders/npm'
