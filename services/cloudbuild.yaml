@@ -14,8 +14,8 @@ steps:
     args:
       - kms
       - decrypt
-      - --ciphertext-file=./keyfile.json.enc
-      - --plaintext-file=./keyfile.json
+      - --ciphertext-file=keyfile.json.enc
+      - --plaintext-file=keyfile.json
       - --location=global
       - --keyring=${_KEYRING}
       - --key=${_KEY}
