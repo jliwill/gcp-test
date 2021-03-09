@@ -22,6 +22,8 @@ steps:
       - --location=us-central1
       - --keyring=${_KEYRING}
       - --key=${_KEY}
+  #run unit test
+  
   #serverless deploy
   - name: 'gcr.io/cloud-builders/npm'
     id: 'Deploy serverless framework'
@@ -31,7 +33,7 @@ steps:
       - | 
           cd ./services
           npm install
-          npx serverless deploy -v
+          npx serverless deploy --verbose --env stg 
 substitutions:
   _KEYRING: projects/clear-veld-306519/locations/us-central1/keyRings/test_keyring
   _KEY: projects/clear-veld-306519/locations/us-central1/keyRings/test_keyring/cryptoKeys/my_test_key #copy resource name in console GCP KMS
