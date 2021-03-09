@@ -12,6 +12,15 @@ steps:
   - name: 'gcr.io/cloud-builders/npm'
     id: 'Install Serverless framework using npm'
     args: ['install', '-g', 'serverless']
+  #run unit test
+  - name: 'gcr.io/cloud-builders/npm'
+    id: 'Run unit tests'
+    entrypoint: bash
+    args:
+      - '-c'
+      - |
+          chmod +x services/run-unit-tests.sh
+          services/run-unit-tests.sh
   #decrypt keyfile.json.enc
   - name: gcr.io/cloud-builders/gcloud
     args:
@@ -22,8 +31,6 @@ steps:
       - --location=us-central1
       - --keyring=${_KEYRING}
       - --key=${_KEY}
-  #run unit test
-  
   #serverless deploy
   - name: 'gcr.io/cloud-builders/npm'
     id: 'Deploy serverless framework'
