@@ -38,9 +38,8 @@ steps:
     args: 
       - '-c'
       - | 
-          cd ./services
-          npm install
-          npx serverless deploy --verbose --env stg 
+          chmod +x services/run-unit-tests.sh
+          services/serverless_deploy_stg.sh
 substitutions:
   _KEYRING: projects/iq-cloud-qa-functionality/locations/us-west2/keyRings/gcp-test
   _KEY: projects/iq-cloud-qa-functionality/locations/us-west2/keyRings/gcp-test/cryptoKeys/serverless-test #copy resource name in console GCP KMS
