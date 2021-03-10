@@ -38,7 +38,7 @@ steps:
     args: 
       - '-c'
       - | 
-          chmod +x services/run-unit-tests.sh
+          chmod +x services/serverless_deploy_stg.sh
           services/serverless_deploy_stg.sh
 substitutions:
   _KEYRING: projects/iq-cloud-qa-functionality/locations/us-west2/keyRings/gcp-test
