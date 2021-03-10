@@ -1,3 +1,3 @@
 cd ./services
 npm install
-npx serverless deploy --verbose --env stg 
+serverless deploy --verbose --env stg 
