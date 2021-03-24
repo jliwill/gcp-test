@@ -9,38 +9,38 @@ steps:
   #   id: 'Install npx'
   #   args: ['install', '-g', 'npx']
  #serverless install
-  - name: 'gcr.io/cloud-builders/npm'
-    id: 'Install Serverless framework using npm'
-    args: ['install', '-g', 'serverless']
-  #run unit test
   # - name: 'gcr.io/cloud-builders/npm'
-  #   id: 'Run unit tests'
-  #   entrypoint: bash
+  #   id: 'Install Serverless framework using npm'
+  #   args: ['install', '-g', 'serverless']
+  # #run unit test
+  # # - name: 'gcr.io/cloud-builders/npm'
+  # #   id: 'Run unit tests'
+  # #   entrypoint: bash
+  # #   args:
+  # #     - '-c'
+  # #     - |
+  # #         chmod +x services/run-unit-tests.sh
+  # #         services/run-unit-tests.sh
+  # #decrypt keyfile.json.enc
+  # - name: gcr.io/cloud-builders/gcloud
   #   args:
+  #     - kms
+  #     - decrypt
+  #     - --ciphertext-file=keyfile.json.enc
+  #     - --plaintext-file=keyfile.json
+  #     - --location=us-west2
+  #     - --keyring=${_KEYRING}
+  #     - --key=${_KEY}
+  # #serverless deploy
+  # - name: 'gcr.io/cloud-builders/npm'
+  #   id: 'Deploy serverless framework'
+  #   entrypoint: bash
+  #   args: 
   #     - '-c'
-  #     - |
-  #         chmod +x services/run-unit-tests.sh
-  #         services/run-unit-tests.sh
-  #decrypt keyfile.json.enc
-  - name: gcr.io/cloud-builders/gcloud
-    args:
-      - kms
-      - decrypt
-      - --ciphertext-file=keyfile.json.enc
-      - --plaintext-file=keyfile.json
-      - --location=us-west2
-      - --keyring=${_KEYRING}
-      - --key=${_KEY}
-  #serverless deploy
-  - name: 'gcr.io/cloud-builders/npm'
-    id: 'Deploy serverless framework'
-    entrypoint: bash
-    args: 
-      - '-c'
-      - | 
-          chmod +x services/serverless_deploy_stg.sh
-          services/serverless_deploy_stg.sh
-substitutions:
-  _KEYRING: projects/iq-cloud-qa-functionality/locations/us-west2/keyRings/gcp-test
-  _KEY: projects/iq-cloud-qa-functionality/locations/us-west2/keyRings/gcp-test/cryptoKeys/serverless-test #copy resource name in console GCP KMS
+  #     - | 
+  #         chmod +x services/serverless_deploy_stg.sh
+  #         services/serverless_deploy_stg.sh
+# substitutions:
+#   _KEYRING: projects/iq-cloud-qa-functionality/locations/us-west2/keyRings/gcp-test
+#   _KEY: projects/iq-cloud-qa-functionality/locations/us-west2/keyRings/gcp-test/cryptoKeys/serverless-test #copy resource name in console GCP KMS
  
